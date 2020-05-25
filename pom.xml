@@ -42,7 +42,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>me.nurio.applicationbase.Application</mainClass>
+                            <mainClass>me.nurio.applicationbase.ApplicationServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

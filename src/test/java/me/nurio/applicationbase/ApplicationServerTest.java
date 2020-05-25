@@ -2,7 +2,7 @@ package me.nurio.applicationbase;
 
 import org.junit.Test;
 
-public class ApplicationTest {
+public class ApplicationServerTest {
 
     @Test
     public void exampleTest() {
