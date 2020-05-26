@@ -6,7 +6,7 @@ import me.nurio.applicationbase.sockets.PacketQueue;
 
 import java.io.DataOutputStream;
 
-public class ConnectionAttender extends Thread{
+public class ConnectionAttender extends Thread {
 
     private ConnectionSocket connectionSocket;
 

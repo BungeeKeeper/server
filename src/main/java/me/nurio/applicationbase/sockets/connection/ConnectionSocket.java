@@ -2,7 +2,6 @@ package me.nurio.applicationbase.sockets.connection;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
-import me.nurio.applicationbase.packets.Packet;
 import me.nurio.applicationbase.sockets.PacketQueue;
 
 import javax.net.ssl.SSLSocket;
@@ -46,4 +45,5 @@ public class ConnectionSocket extends Thread {
         connectionListener.start();
         connectionAttender.start();
     }
+
 }

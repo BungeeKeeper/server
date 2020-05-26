@@ -45,7 +45,7 @@ public class MasterSocket {
 
             final SSLServerSocketFactory factory = context.getServerSocketFactory();
 
-            sslServerSocket = (SSLServerSocket) factory.createServerSocket(1234);
+            sslServerSocket = (SSLServerSocket) factory.createServerSocket(6060);
         } catch (Exception er) {
 
         }

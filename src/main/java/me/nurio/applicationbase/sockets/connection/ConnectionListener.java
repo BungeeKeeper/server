@@ -1,7 +1,5 @@
 package me.nurio.applicationbase.sockets.connection;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import me.nurio.applicationbase.packets.Packet;
 import me.nurio.applicationbase.packets.PacketFactory;
@@ -16,7 +14,7 @@ public class ConnectionListener extends Thread {
     private PacketQueue packetQueue;
     private DataInputStream inputStream;
 
-    public ConnectionListener(ConnectionSocket connection){
+    public ConnectionListener(ConnectionSocket connection) {
         connectionSocket = connection;
         packetQueue = connectionSocket.getInputQueue();
         inputStream = connectionSocket.getInputStream();
@@ -24,7 +22,7 @@ public class ConnectionListener extends Thread {
 
     @SneakyThrows
     public void run() {
-        while(true){
+        while (true) {
             byte packetId = inputStream.readByte();
             Packet packet = PacketFactory.getById(packetId);
             packet.read(inputStream);

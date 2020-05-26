@@ -3,3 +3,6 @@
 
 #Maven
 target/
+
+# Keystore
+keystore.p12
