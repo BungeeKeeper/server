@@ -1,4 +1,4 @@
-package me.nurio.applicationbase.packets.types;
+package me.nurio.applicationbase.packets.system;
 
 import lombok.*;
 import me.nurio.applicationbase.packets.Packet;
@@ -9,9 +9,9 @@ import java.io.DataOutputStream;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class WelcomePacket implements Packet {
+public class HandshakeSystemPacket implements Packet {
 
-    private static final byte PACKET_ID = 1;
+    public static final byte PACKET_ID = 1;
 
     @Getter private String message;
     @Getter private boolean accepted;
