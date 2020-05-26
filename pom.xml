@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>me.nurio</groupId>
-    <artifactId>applicationbase</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Application Base</name>
-    <description>Simple application base code</description>
+    <groupId>me.nurio.bungeekeer</groupId>
+    <artifactId>server</artifactId>
+    <version>0.0.1</version>
+    <name>BungeeKeeper Server</name>
+    <description>BungeeKeeper server instance</description>
 
     <repositories>
         <repository>
@@ -58,7 +58,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>me.nurio.applicationbase.ApplicationServer</mainClass>
+                            <mainClass>me.nurio.bungeekeeper.server.ApplicationServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

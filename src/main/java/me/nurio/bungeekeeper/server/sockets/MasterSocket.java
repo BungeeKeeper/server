@@ -1,8 +1,8 @@
-package me.nurio.applicationbase.sockets;
+package me.nurio.bungeekeeper.server.sockets;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.nurio.applicationbase.sockets.connection.ConnectionSocket;
+import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 
 import javax.net.ssl.*;
 import java.io.FileInputStream;

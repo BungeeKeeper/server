@@ -1,6 +1,6 @@
-package me.nurio.applicationbase;
+package me.nurio.bungeekeeper.server;
 
-import me.nurio.applicationbase.sockets.MasterSocket;
+import me.nurio.bungeekeeper.server.sockets.MasterSocket;
 
 /**
  * Application main class.

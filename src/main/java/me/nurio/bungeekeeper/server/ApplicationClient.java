@@ -1,4 +1,4 @@
-package me.nurio.applicationbase;
+package me.nurio.bungeekeeper.server;
 
 import lombok.SneakyThrows;
 

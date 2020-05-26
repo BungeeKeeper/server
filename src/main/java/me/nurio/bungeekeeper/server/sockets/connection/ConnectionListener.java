@@ -1,7 +1,7 @@
-package me.nurio.applicationbase.sockets.connection;
+package me.nurio.bungeekeeper.server.sockets.connection;
 
 import lombok.SneakyThrows;
-import me.nurio.applicationbase.sockets.PacketQueue;
+import me.nurio.bungeekeeper.server.sockets.PacketQueue;
 import me.nurio.bungeekeeper.packets.Packet;
 import me.nurio.bungeekeeper.packets.PacketFactory;
 
