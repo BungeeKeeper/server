@@ -1,7 +1,7 @@
 package me.nurio.applicationbase.sockets.connection;
 
 import lombok.SneakyThrows;
-import me.nurio.applicationbase.packets.Packet;
+import me.nurio.bungeekeeper.packets.Packet;
 import me.nurio.applicationbase.sockets.PacketQueue;
 
 import java.io.DataOutputStream;

@@ -1,9 +1,9 @@
 package me.nurio.applicationbase.sockets.connection;
 
 import lombok.SneakyThrows;
-import me.nurio.applicationbase.packets.Packet;
-import me.nurio.applicationbase.packets.PacketFactory;
 import me.nurio.applicationbase.sockets.PacketQueue;
+import me.nurio.bungeekeeper.packets.Packet;
+import me.nurio.bungeekeeper.packets.PacketFactory;
 
 import java.io.DataInputStream;
 
@@ -24,8 +24,9 @@ public class ConnectionListener extends Thread {
     public void run() {
         while (true) {
             byte packetId = inputStream.readByte();
-            Packet packet = PacketFactory.getById(packetId);
+            Packet packet = PacketFactory.createPacketById(packetId);
             packet.read(inputStream);
+            System.out.println(packetQueue.toString());
             packetQueue.registerPacket(packet);
         }
     }

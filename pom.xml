@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.nurio</groupId>
     <artifactId>applicationbase</artifactId>
@@ -7,7 +8,22 @@
     <name>Application Base</name>
     <description>Simple application base code</description>
 
+    <repositories>
+        <repository>
+            <id>nurio-repo</id>
+            <url>https://nurio.me/repo/mvn/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+
+        <!-- BungeeKeeper Packets -->
+        <dependency>
+            <groupId>me.nurio.bungeekeeper</groupId>
+            <artifactId>packets</artifactId>
+            <version>0.0.1</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
