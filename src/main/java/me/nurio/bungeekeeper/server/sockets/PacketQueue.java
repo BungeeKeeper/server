@@ -11,8 +11,6 @@ public class PacketQueue {
     private List<Packet> packetQueue = new ArrayList<>();
 
     public synchronized void registerPacket(Packet packet) {
-        System.out.println("Registered packet with id: " + packet.getId());
-        System.out.println(packet.toString());
         packetQueue.add(packet);
     }
 

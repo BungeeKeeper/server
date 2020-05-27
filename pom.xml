@@ -22,7 +22,15 @@
             <groupId>me.nurio.bungeekeeper</groupId>
             <artifactId>packets</artifactId>
             <version>0.0.1</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Java Event System -->
+        <dependency>
+            <groupId>me.nurio</groupId>
+            <artifactId>events</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->

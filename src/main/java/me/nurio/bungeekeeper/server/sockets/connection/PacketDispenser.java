@@ -6,14 +6,14 @@ import me.nurio.bungeekeeper.server.sockets.PacketQueue;
 
 import java.io.DataOutputStream;
 
-public class ConnectionAttender extends Thread {
+public class PacketDispenser extends Thread {
 
     private ConnectionSocket connectionSocket;
 
     private PacketQueue packetQueue;
     private DataOutputStream outputStream;
 
-    public ConnectionAttender(ConnectionSocket connection) {
+    public PacketDispenser(ConnectionSocket connection) {
         connectionSocket = connection;
         packetQueue = connectionSocket.getOutputQueue();
         outputStream = connectionSocket.getOutputStream();

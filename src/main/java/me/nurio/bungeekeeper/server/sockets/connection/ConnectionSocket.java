@@ -17,8 +17,9 @@ public class ConnectionSocket extends Thread {
     @Getter private DataInputStream inputStream;
     @Getter private DataOutputStream outputStream;
 
-    @Getter private ConnectionListener connectionListener;
-    @Getter private ConnectionAttender connectionAttender;
+    @Getter private PacketListener packetListener;
+    @Getter private PacketDispenser packetDispenser;
+    @Getter private PacketProcessor packetProcessor;
 
     @Getter private PacketQueue inputQueue = new PacketQueue();
     @Getter private PacketQueue outputQueue = new PacketQueue();
@@ -33,8 +34,10 @@ public class ConnectionSocket extends Thread {
 
         inputStream = new DataInputStream(sslSocket.getInputStream());
         outputStream = new DataOutputStream(sslSocket.getOutputStream());
-        connectionListener = new ConnectionListener(this);
-        connectionAttender = new ConnectionAttender(this);
+
+        packetListener = new PacketListener(this);
+        packetDispenser = new PacketDispenser(this);
+        packetProcessor = new PacketProcessor(this);
     }
 
     @SneakyThrows
@@ -42,8 +45,9 @@ public class ConnectionSocket extends Thread {
     public void run() {
         System.out.printf("Connected with '%s'\n", address);
 
-        connectionListener.start();
-        connectionAttender.start();
+        packetListener.start();
+        packetDispenser.start();
+        packetProcessor.start();
     }
 
 }
