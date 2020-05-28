@@ -21,7 +21,7 @@ public class PacketDispenser extends Thread {
 
     @SneakyThrows
     public void run() {
-        while (true) {
+        while (!isInterrupted()) {
             if (!packetQueue.hasPacket()) continue;
 
             Packet packet = packetQueue.getNextPacket();

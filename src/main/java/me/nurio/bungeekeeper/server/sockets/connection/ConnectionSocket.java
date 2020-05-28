@@ -50,4 +50,14 @@ public class ConnectionSocket extends Thread {
         packetProcessor.start();
     }
 
+    @SneakyThrows
+    public void disconnect() {
+        packetProcessor.interrupt();
+        packetListener.interrupt();
+        packetDispenser.interrupt();
+
+        inputStream.close();
+        outputStream.close();
+        sslSocket.close();
+    }
 }

@@ -2,6 +2,7 @@ package me.nurio.bungeekeeper.server.sockets;
 
 import lombok.SneakyThrows;
 import me.nurio.bungeekeeper.packets.Packet;
+import me.nurio.bungeekeeper.server.utils.SchedulerUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class PacketQueue {
     @SneakyThrows
     public synchronized boolean hasPacket() {
         boolean hasNext = packetQueue.size() > 0;
-        if (!hasNext) Thread.sleep(5);
+        if (!hasNext) SchedulerUtils.sleep(5);
         return hasNext;
     }
 
