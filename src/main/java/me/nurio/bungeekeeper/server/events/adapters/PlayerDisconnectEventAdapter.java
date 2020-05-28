@@ -19,10 +19,9 @@ public class PlayerDisconnectEventAdapter implements EventAdapter {
         DisconnectPacket disconnectPacket = (DisconnectPacket) packet;
 
         PlayerDisconnectEvent event = new PlayerDisconnectEvent();
-        event.setAddress(null);
-        event.setPlayerName(null);
-        event.setUniqueId(null); // TODO
-        event.setServerName(disconnectPacket.getServerName());
+        event.setAddress(disconnectPacket.getAddress());
+        event.setPlayerName(disconnectPacket.getPlayerName());
+        event.setUniqueId(disconnectPacket.getUniqueId());
 
         event.setConnectionSocket(socket);
         return event;

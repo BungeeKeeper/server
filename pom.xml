@@ -17,14 +17,6 @@
 
     <dependencies>
 
-        <!-- BungeeKeeper Packets -->
-        <dependency>
-            <groupId>me.nurio.bungeekeeper</groupId>
-            <artifactId>packets</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
-        </dependency>
-
         <!-- Java Event System -->
         <dependency>
             <groupId>me.nurio</groupId>
@@ -79,6 +71,25 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>packets/src/main/java</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>

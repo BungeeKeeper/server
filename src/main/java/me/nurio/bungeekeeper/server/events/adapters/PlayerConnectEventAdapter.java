@@ -21,7 +21,7 @@ public class PlayerConnectEventAdapter implements EventAdapter {
         PlayerConnectEvent event = new PlayerConnectEvent();
         event.setAddress(connectionPacket.getAddress());
         event.setPlayerName(connectionPacket.getUsername());
-        event.setUniqueId(null); // TODO
+        event.setUniqueId(connectionPacket.getUniqueId());
 
         event.setConnectionSocket(socket);
         return event;
