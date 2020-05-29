@@ -18,8 +18,10 @@ public class PlayerServerChangeEventAdapter implements EventAdapter {
     public Event getEvent(ConnectionSocket socket, Packet packet) {
         ServerChangePacket changePacket = (ServerChangePacket) packet;
 
-        // TODO playername
         PlayerServerChangeEvent event = new PlayerServerChangeEvent();
+        event.setPlayerName(changePacket.getPlayerName());
+        event.setUniqueId(changePacket.getUniqueId());
+        event.setAddress(changePacket.getAddress());
         event.setServerName(changePacket.getServerName());
 
         event.setConnectionSocket(socket);

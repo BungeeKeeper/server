@@ -4,6 +4,7 @@ import lombok.Data;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 import me.nurio.events.handler.Event;
 
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 @Data

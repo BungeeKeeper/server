@@ -21,12 +21,13 @@ public class PlayerConnectionListener implements EventListener {
 
     @EventHandler
     public void onServerChange(PlayerServerChangeEvent event) {
-        System.out.println("Player '" + null + "' moved to '" + event.getServerName() + "'.");
+        System.out.println("Player '" + event.getPlayerName() + "' moved to '" + event.getServerName() + "'.");
     }
 
     @EventHandler
     public void onPing(PlayerPingEvent event) {
-        //        System.out.println(event.getAddress().getHostName() + " pinged the server.");
+        System.out.println(event.getAddress().getHostString() + " pinged the server.");
+        System.out.println(event.getAddress().getAddress() + " pinged the server.");
     }
 
 }
