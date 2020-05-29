@@ -11,7 +11,8 @@ public class BungeeConnectionListener implements EventListener {
     @EventHandler
     public void onConnection(BungeeConnectEvent event) {
         String server = event.getServerAddress();
-        System.out.println("Connected ['" + server + "'] to the system.");
+        System.out.println("Server ['" + server + "'] has connected to the system.");
+        System.out.println("License: " + event.getLicence() + " @ " + event.getOwner());
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
