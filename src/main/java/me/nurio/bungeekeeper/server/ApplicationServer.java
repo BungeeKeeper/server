@@ -18,6 +18,7 @@ public class ApplicationServer {
         System.out.println("Registering events...");
         EventManager.registerEvents(new BungeeConnectionListener());
         EventManager.registerEvents(new PlayerConnectionListener());
+        EventManager.setDebugLoggingEnabled(true);
 
         System.out.println("Starting socket...");
         startMaster();
