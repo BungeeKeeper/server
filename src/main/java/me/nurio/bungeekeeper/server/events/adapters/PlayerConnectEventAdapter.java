@@ -19,6 +19,7 @@ public class PlayerConnectEventAdapter implements EventAdapter {
         PostConnectionPacket connectionPacket = (PostConnectionPacket) packet;
 
         PlayerConnectEvent event = new PlayerConnectEvent();
+        event.setEventId(connectionPacket.getEventId());
         event.setAddress(connectionPacket.getAddress());
         event.setPlayerName(connectionPacket.getUsername());
         event.setUniqueId(connectionPacket.getUniqueId());

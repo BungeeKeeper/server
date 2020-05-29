@@ -1,5 +1,6 @@
 package me.nurio.bungeekeeper.server.management.listeners;
 
+import me.nurio.bungeekeeper.packets.bungee.ConnectionResponsePacket;
 import me.nurio.bungeekeeper.server.events.types.*;
 import me.nurio.events.handler.EventHandler;
 import me.nurio.events.handler.EventListener;
@@ -14,6 +15,18 @@ public class PlayerConnectionListener implements EventListener {
     @EventHandler
     public void onConnect(PlayerConnectEvent event) {
         System.out.println("Player '" + event.getPlayerName() + "' has connected to server.");
+
+        // Temporal response
+        ConnectionResponsePacket connectionPacket = new ConnectionResponsePacket(
+            event.getEventId(),
+            event.getPlayerName(),
+            event.getUniqueId(),
+            event.getAddress().getAddress(),
+            true,
+            1,
+            "Not implemented yet."
+        );
+        event.getConnectionSocket().getOutputQueue().registerPacket(connectionPacket);
     }
 
     @EventHandler
