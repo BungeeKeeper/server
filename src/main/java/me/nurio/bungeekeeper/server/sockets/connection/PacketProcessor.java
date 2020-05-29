@@ -23,7 +23,6 @@ public class PacketProcessor extends Thread {
             if (!packetQueue.hasPacket()) continue;
             Packet packet = packetQueue.getNextPacket();
 
-            System.out.println(packet);
             Event event = EventAdapterManager.getEvent(connectionSocket, packet);
             EventManager.callEvent(event);
         }

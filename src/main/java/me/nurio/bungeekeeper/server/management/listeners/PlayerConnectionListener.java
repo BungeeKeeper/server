@@ -1,17 +1,19 @@
 package me.nurio.bungeekeeper.server.management.listeners;
 
-import me.nurio.bungeekeeper.server.events.types.PlayerConnectingEvent;
-import me.nurio.bungeekeeper.server.events.types.PlayerDisconnectEvent;
-import me.nurio.bungeekeeper.server.events.types.PlayerPingEvent;
-import me.nurio.bungeekeeper.server.events.types.PlayerServerChangeEvent;
+import me.nurio.bungeekeeper.server.events.types.*;
 import me.nurio.events.handler.EventHandler;
 import me.nurio.events.handler.EventListener;
 
 public class PlayerConnectionListener implements EventListener {
 
     @EventHandler
-    public void onConnect(PlayerConnectingEvent event) {
-        System.out.println("Player '" + event.getPlayerName() + "' connected to server.");
+    public void onConnecting(PlayerConnectingEvent event) {
+        System.out.println("Player '" + event.getPlayerName() + "' is connecting to server.");
+    }
+
+    @EventHandler
+    public void onConnect(PlayerConnectEvent event) {
+        System.out.println("Player '" + event.getPlayerName() + "' has connected to server.");
     }
 
     @EventHandler
@@ -27,7 +29,11 @@ public class PlayerConnectionListener implements EventListener {
     @EventHandler
     public void onPing(PlayerPingEvent event) {
         System.out.println(event.getAddress().getHostString() + " pinged the server.");
-        System.out.println(event.getAddress().getAddress() + " pinged the server.");
+    }
+
+    @EventHandler
+    public void onHandshake(PlayerHandshakeEvent event) {
+        System.out.println(event.getAddress().getHostString() + " is joining to the server.");
     }
 
 }
