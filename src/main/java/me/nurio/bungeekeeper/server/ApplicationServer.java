@@ -1,5 +1,6 @@
 package me.nurio.bungeekeeper.server;
 
+import me.nurio.bungeekeeper.server.config.ConfigManager;
 import me.nurio.bungeekeeper.server.management.listeners.BungeeConnectionListener;
 import me.nurio.bungeekeeper.server.management.listeners.PlayerConnectionListener;
 import me.nurio.bungeekeeper.server.sockets.MasterSocket;
@@ -13,6 +14,9 @@ public class ApplicationServer {
     private static MasterSocket masterSocket;
 
     public static void main(String args[]) throws Exception {
+        System.out.println("Starting configuration manager...");
+        ConfigManager.enable();
+
         System.out.println("Starting...");
 
         System.out.println("Registering events...");

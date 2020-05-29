@@ -1,0 +1,13 @@
+##################################
+# BungeeKeeper configuration 0.1 #
+##################################
+
+# General socket bind settings
+bind:
+  address: "localhost"
+  port: 6060
+
+# SSL configuration section
+ssl:
+  certificate: "keystore.p12"
+  passphase: "123"
