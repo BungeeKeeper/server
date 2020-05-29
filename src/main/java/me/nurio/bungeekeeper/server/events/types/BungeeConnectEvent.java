@@ -7,9 +7,16 @@ import me.nurio.events.handler.EventCancellable;
 
 @Data
 public class BungeeConnectEvent extends Event implements EventCancellable {
+    // Connection data
     private ConnectionSocket connectionSocket;
+    private String address;
 
+    // Provided data
+    private int serverType;
     private String serverAddress;
+    private int serverPort;
+
+    private String owner;
     private String licence;
     private boolean cancelled;
 
