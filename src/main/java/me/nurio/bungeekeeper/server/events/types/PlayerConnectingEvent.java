@@ -11,6 +11,8 @@ import java.util.UUID;
 public class PlayerConnectingEvent extends Event {
     private ConnectionSocket connectionSocket;
 
+    private long eventId;
+
     private String playerName;
     private UUID uniqueId;
     private InetSocketAddress address;

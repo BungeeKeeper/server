@@ -2,6 +2,7 @@ package me.nurio.bungeekeeper.server.sockets.connection;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
+import me.nurio.bungeekeeper.server.logger.Logger;
 import me.nurio.bungeekeeper.server.sockets.PacketQueue;
 
 import javax.net.ssl.SSLSocket;
@@ -11,6 +12,8 @@ import java.io.DataOutputStream;
 public class ConnectionSocket extends Thread {
 
     private SSLSocket sslSocket;
+
+    @Getter private Logger logger;
 
     @Getter private String address;
 
@@ -30,7 +33,8 @@ public class ConnectionSocket extends Thread {
 
         address = socket.getInetAddress().getHostAddress();
 
-        System.out.printf("Connecting with '%s'...\n", address);
+        logger = Logger.getInstance("Connection", address + ":" + socket.getPort());
+        logger.log("Connecting with '%s'...", address);
 
         inputStream = new DataInputStream(sslSocket.getInputStream());
         outputStream = new DataOutputStream(sslSocket.getOutputStream());
@@ -43,7 +47,7 @@ public class ConnectionSocket extends Thread {
     @SneakyThrows
     @Override
     public void run() {
-        System.out.printf("Connected with '%s'\n", address);
+        logger.log("Connected with '%s'", address);
 
         packetListener.start();
         packetDispenser.start();
@@ -60,4 +64,5 @@ public class ConnectionSocket extends Thread {
         outputStream.close();
         sslSocket.close();
     }
+
 }

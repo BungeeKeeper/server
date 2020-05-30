@@ -18,24 +18,28 @@ public class PlayerPingHandshakeEventAdapter implements EventAdapter {
     @Override
     public Event getEvent(ConnectionSocket socket, Packet packet) {
         HandshakePacket handshakePacket = (HandshakePacket) packet;
-        return handshakePacket.getRequestedProtocol() == 1 ? getPingEvent(handshakePacket) : getHandshakeEvent(handshakePacket);
+        return handshakePacket.getRequestedProtocol() == 1 ? getPingEvent(socket, handshakePacket) : getHandshakeEvent(socket, handshakePacket);
     }
 
-    public Event getPingEvent(HandshakePacket handshakePacket) {
+    public Event getPingEvent(ConnectionSocket socket, HandshakePacket handshakePacket) {
         PlayerPingEvent event = new PlayerPingEvent();
         event.setAddress(handshakePacket.getAddress());
         event.setDomain(handshakePacket.getDomain());
         event.setPort(handshakePacket.getPort());
         event.setProtocol(handshakePacket.getProtocol());
+
+        event.setConnectionSocket(socket);
         return event;
     }
 
-    public Event getHandshakeEvent(HandshakePacket handshakePacket) {
+    public Event getHandshakeEvent(ConnectionSocket socket, HandshakePacket handshakePacket) {
         PlayerHandshakeEvent event = new PlayerHandshakeEvent();
         event.setAddress(handshakePacket.getAddress());
         event.setDomain(handshakePacket.getDomain());
         event.setPort(handshakePacket.getPort());
         event.setProtocol(handshakePacket.getProtocol());
+
+        event.setConnectionSocket(socket);
         return event;
     }
 

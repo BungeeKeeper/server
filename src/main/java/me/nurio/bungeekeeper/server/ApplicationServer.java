@@ -1,6 +1,7 @@
 package me.nurio.bungeekeeper.server;
 
 import me.nurio.bungeekeeper.server.config.ConfigManager;
+import me.nurio.bungeekeeper.server.logger.Logger;
 import me.nurio.bungeekeeper.server.management.listeners.BungeeConnectionListener;
 import me.nurio.bungeekeeper.server.management.listeners.PlayerConnectionListener;
 import me.nurio.bungeekeeper.server.sockets.MasterSocket;
@@ -12,21 +13,20 @@ import me.nurio.events.EventManager;
 public class ApplicationServer {
 
     private static MasterSocket masterSocket;
+    private static Logger logger = Logger.getInstance();
 
     public static void main(String args[]) throws Exception {
-        System.out.println("Starting configuration manager...");
+        logger.log("Starting configuration manager...");
         ConfigManager.enable();
 
-        System.out.println("Starting...");
-
-        System.out.println("Registering events...");
+        logger.log("Setting up BungeeKeeper event listeners...");
         EventManager.registerEvents(new BungeeConnectionListener());
         EventManager.registerEvents(new PlayerConnectionListener());
-        EventManager.setDebugLoggingEnabled(true);
+        EventManager.setDebugLoggingEnabled(false);
 
-        System.out.println("Starting socket...");
+        logger.log("Starting BungeeKeeper socket server...");
         startMaster();
-        System.out.println("Good bye!");
+        logger.log("Good bye!");
     }
 
     private static void startMaster() {

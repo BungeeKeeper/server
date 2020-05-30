@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.nurio.bungeekeeper.server.config.ConfigManager;
 import me.nurio.bungeekeeper.server.config.GeneralServerConfig;
+import me.nurio.bungeekeeper.server.logger.Logger;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 
 import javax.net.ssl.*;
@@ -15,6 +16,8 @@ import java.security.KeyStore;
 public class MasterSocket {
 
     private static GeneralServerConfig config = ConfigManager.getConfig();
+
+    private Logger logger = Logger.getInstance("Master");
 
     private SSLServerSocket sslServerSocket;
     @Getter @Setter boolean listening = true;
@@ -58,10 +61,10 @@ public class MasterSocket {
             InetAddress inetAddress = InetAddress.getByName(bind.getAddress());
             sslServerSocket = (SSLServerSocket) factory.createServerSocket(bind.getPort(), 0, inetAddress);
 
-            System.out.printf("BungeeKeeper is now listening to %s:%s%n", inetAddress.getHostAddress(), bind.getPort());
+            logger.log("BungeeKeeper is now listening to %s:%s", inetAddress.getHostAddress(), bind.getPort());
         } catch (Exception er) {
-            System.err.println("Failed to start BungeeKeeper.");
-            System.err.println(er.getMessage());
+            logger.error("Failed to start BungeeKeeper.");
+            logger.error(er.getMessage());
         }
     }
 
@@ -72,8 +75,8 @@ public class MasterSocket {
             ConnectionSocket con = new ConnectionSocket(sslSocket);
             con.start();
         } catch (IOException e) {
+            logger.error(e.getMessage());
             e.printStackTrace();
-            System.out.print(e);
         }
     }
 }
