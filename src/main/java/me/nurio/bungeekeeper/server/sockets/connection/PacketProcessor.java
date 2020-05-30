@@ -7,6 +7,8 @@ import me.nurio.bungeekeeper.server.sockets.PacketQueue;
 import me.nurio.events.EventManager;
 import me.nurio.events.handler.Event;
 
+import java.util.concurrent.CompletableFuture;
+
 public class PacketProcessor extends Thread {
 
     private ConnectionSocket connectionSocket;
@@ -22,9 +24,10 @@ public class PacketProcessor extends Thread {
         while (!isInterrupted()) {
             if (!packetQueue.hasPacket()) continue;
             Packet packet = packetQueue.getNextPacket();
-
-            Event event = EventAdapterManager.getEvent(connectionSocket, packet);
-            EventManager.callEvent(event);
+            CompletableFuture.runAsync(() -> {
+                Event event = EventAdapterManager.getEvent(connectionSocket, packet);
+                EventManager.callEvent(event);
+            });
         }
     }
 
