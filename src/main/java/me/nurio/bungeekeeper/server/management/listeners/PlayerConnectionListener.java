@@ -6,8 +6,6 @@ import me.nurio.bungeekeeper.server.logger.Logger;
 import me.nurio.events.handler.EventHandler;
 import me.nurio.events.handler.EventListener;
 
-import java.util.Random;
-
 public class PlayerConnectionListener implements EventListener {
 
     @EventHandler
@@ -20,8 +18,8 @@ public class PlayerConnectionListener implements EventListener {
             event.getEventId(),
             event.getPlayerName(),
             event.getUniqueId(),
-            event.getAddress().getAddress(),
-            new Random().nextBoolean(),
+            event.getAddress(),
+            event.getPlayerName().equalsIgnoreCase("xxnurioxx"),
             1,
             "Not implemented yet."
         );
@@ -50,13 +48,13 @@ public class PlayerConnectionListener implements EventListener {
     @EventHandler
     public void onPing(PlayerPingEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
-        logger.log(event.getAddress().getHostString() + " pinged the server.");
+        logger.log(event.getAddress() + " pinged the server.");
     }
 
     @EventHandler
     public void onHandshake(PlayerHandshakeEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
-        logger.log(event.getAddress().getHostString() + " is joining to the server.");
+        logger.log(event.getAddress() + " is joining to the server.");
     }
 
 }
