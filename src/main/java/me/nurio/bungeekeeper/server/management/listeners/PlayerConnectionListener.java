@@ -27,7 +27,6 @@ public class PlayerConnectionListener implements EventListener {
         );
 
         event.getConnectionSocket().getOutputQueue().registerPacket(connectionPacket);
-        logger.error("Registered.");
     }
 
     @EventHandler

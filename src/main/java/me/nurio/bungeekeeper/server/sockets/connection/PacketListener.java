@@ -28,7 +28,7 @@ public class PacketListener extends Thread {
             Packet packet = PacketFactory.createPacketById(packetId);
             packet.read(inputStream);
             packetQueue.registerPacket(packet);
-            System.err.println(packet);
+
             // Stop listener
             if (packetId == GoodbyeSystemPacket.PACKET_ID) break;
         }
