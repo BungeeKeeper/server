@@ -1,7 +1,7 @@
 package me.nurio.bungeekeeper.server.events.adapters;
 
 import me.nurio.bungeekeeper.packets.Packet;
-import me.nurio.bungeekeeper.packets.bungee.ConnectionPacket;
+import me.nurio.bungeekeeper.packets.bungee.PreConnectionPacket;
 import me.nurio.bungeekeeper.server.events.EventAdapter;
 import me.nurio.bungeekeeper.server.events.types.PlayerConnectingEvent;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
@@ -18,7 +18,7 @@ public class PlayerConnectingEventAdapter implements EventAdapter {
 
     @Override
     public Event getEvent(ConnectionSocket socket, Packet packet) {
-        ConnectionPacket connectionPacket = (ConnectionPacket) packet;
+        PreConnectionPacket connectionPacket = (PreConnectionPacket) packet;
 
         PlayerConnectingEvent event = new PlayerConnectingEvent();
         event.setEventId(connectionPacket.getEventId());

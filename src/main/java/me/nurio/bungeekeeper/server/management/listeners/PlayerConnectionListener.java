@@ -19,7 +19,7 @@ public class PlayerConnectionListener implements EventListener {
             event.getPlayerName(),
             event.getUniqueId(),
             event.getAddress(),
-            event.getPlayerName().equalsIgnoreCase("xxnurioxx"),
+            event.getPlayerName().contains("x"),
             1,
             "Not implemented yet."
         );
