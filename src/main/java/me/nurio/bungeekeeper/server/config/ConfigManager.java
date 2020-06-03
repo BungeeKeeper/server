@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 
 import java.io.File;
-import java.net.URL;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 
@@ -51,9 +51,8 @@ public class ConfigManager {
         if (!file.exists()) {
             // Configuration file doesn't exists. Create a new one using template contents.
             // This will include comments and blank line separators.
-            URL url = ConfigManager.class.getClassLoader().getResource("connection.yml");
-            File source = new File(url.getFile());
-            Files.copy(source.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            InputStream sourceStream = ConfigManager.class.getClassLoader().getResourceAsStream("connection.yml");
+            Files.copy(sourceStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
             return;
         }
 
