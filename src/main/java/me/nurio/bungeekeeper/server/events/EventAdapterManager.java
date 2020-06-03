@@ -19,7 +19,8 @@ public class EventAdapterManager {
 
         if (packetId == 20) return new PlayerPingHandshakeEventAdapter();
         if (packetId == 21) return new PlayerConnectingEventAdapter();
-        if (packetId == 22) return new PlayerConnectEventAdapter();
+        if (packetId == 25) return new PlayerConnectEventAdapter();
+        if (packetId == 22) return new PlayerConnectedEventAdapter();
         if (packetId == 23) return new PlayerServerChangeEventAdapter();
         if (packetId == 24) return new PlayerDisconnectEventAdapter();
 

@@ -7,7 +7,7 @@ import me.nurio.events.handler.Event;
 import java.util.UUID;
 
 @Data
-public class PlayerConnectEvent extends Event {
+public class PlayerConnectedEvent extends Event {
     private ConnectionSocket connectionSocket;
 
     private long eventId;
