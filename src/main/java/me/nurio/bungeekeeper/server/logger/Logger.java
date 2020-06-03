@@ -33,7 +33,7 @@ public class Logger {
 
     public void error(String message) {
         String prefix = this.prefix.length() == 0 ? "" : " " + this.prefix;
-        System.err.println(getTimestamp() + " [Error]" + prefix + " " + message);
+        System.err.println(ConsoleColor.RED_BRIGHT + getTimestamp() + " [Error]" + prefix + " " + message + ConsoleColor.RESET);
     }
 
     public void log(String message, Object... args) {

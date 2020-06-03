@@ -65,6 +65,7 @@ public class MasterSocket {
         } catch (Exception er) {
             logger.error("Failed to start BungeeKeeper.");
             logger.error(er.getMessage());
+            System.exit(1);
         }
     }
 
