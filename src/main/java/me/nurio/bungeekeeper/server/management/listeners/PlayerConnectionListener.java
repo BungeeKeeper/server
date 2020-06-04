@@ -12,12 +12,6 @@ public class PlayerConnectionListener implements EventListener {
     public void onConnecting(PlayerConnectingEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
         logger.log("Player '" + event.getPlayerName() + "' is connecting to the server.");
-    }
-
-    @EventHandler
-    public void onConnect(PlayerConnectEvent event) {
-        Logger logger = event.getConnectionSocket().getLogger();
-        logger.log("Player '" + event.getPlayerName() + "' has connected to the server.");
 
         // Temporal response
         ConnectionResponsePacket connectionPacket = new ConnectionResponsePacket(
@@ -27,10 +21,16 @@ public class PlayerConnectionListener implements EventListener {
             event.getAddress(),
             event.getPlayerName().contains("x"),
             1,
-            "Not implemented yet. (" + event.isPremium() + ")"
+            "Not implemented yet."
         );
 
         event.getConnectionSocket().getOutputQueue().registerPacket(connectionPacket);
+    }
+
+    @EventHandler
+    public void onConnect(PlayerConnectEvent event) {
+        Logger logger = event.getConnectionSocket().getLogger();
+        logger.log("Player '" + event.getPlayerName() + "' has connected to the server.");
     }
 
     @EventHandler
