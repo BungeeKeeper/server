@@ -13,8 +13,8 @@ public class HandshakeDatabaseAdapter implements DatabaseAdapter {
 
     private static final Logger logger = Logger.getInstance("Database Adapter", "PlayerHandshake");
     private static final String SQL_HISTORY_PING_INSERT = "INSERT INTO history_ping" +
-        "(server_id, `time`, server_domain, server_port, user_address, user_port, user_version)" +
-        "VALUES(?, ?, ?, ?, ?, ?, ?);";
+        "(server_id, `time`, server_domain, server_port, user_address, user_port, user_version, user_request_protocol)" +
+        "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
 
     private Connection sql = ApplicationServer.getDatabase().getConnection();
 
@@ -37,6 +37,7 @@ public class HandshakeDatabaseAdapter implements DatabaseAdapter {
             preparedStmt.setString(5, address[0]);
             preparedStmt.setInt(6, Integer.parseInt(address[1]));
             preparedStmt.setInt(7, packet.getProtocol());
+            preparedStmt.setInt(8, packet.getRequestedProtocol());
 
             // Execute the PreparedStatement
             preparedStmt.execute();
