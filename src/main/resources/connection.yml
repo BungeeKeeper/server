@@ -11,3 +11,11 @@ bind:
 ssl:
   certificate: "keystore.p12"
   passphase: "123"
+
+# SQL configuration section
+sql:
+  host: "localhost"
+  database: "bungeekeeper"
+  port: 3306
+  user: "root"
+  password: "123456"
