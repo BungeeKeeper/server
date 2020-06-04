@@ -1,7 +1,7 @@
 package me.nurio.bungeekeeper.server.databases.adapters;
 
 import me.nurio.bungeekeeper.packets.Packet;
-import me.nurio.bungeekeeper.packets.bungee.ConnectionPacket;
+import me.nurio.bungeekeeper.packets.bungee.PostConnectionPacket;
 import me.nurio.bungeekeeper.server.ApplicationServer;
 import me.nurio.bungeekeeper.server.databases.DatabaseAdapter;
 import me.nurio.bungeekeeper.server.logger.Logger;
@@ -9,7 +9,7 @@ import me.nurio.bungeekeeper.server.logger.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class PlayerConnectDatabaseAdapter implements DatabaseAdapter {
+public class PlayerConnectedDatabaseAdapter implements DatabaseAdapter {
 
     private static final Logger logger = Logger.getInstance("Database Adapter", "PlayerConnect");
     private static final String SQL_HISTORY_CONNECTION_INSERT = "INSERT INTO history_connections" +
@@ -20,11 +20,11 @@ public class PlayerConnectDatabaseAdapter implements DatabaseAdapter {
 
     @Override
     public void perform(Packet packet) {
-        ConnectionPacket connectionPacket = (ConnectionPacket) packet;
+        PostConnectionPacket connectionPacket = (PostConnectionPacket) packet;
         query(connectionPacket);
     }
 
-    private void query(ConnectionPacket packet) {
+    private void query(PostConnectionPacket packet) {
         try {
             String[] address = packet.getAddress().replace("/", "").split(":");
 
@@ -32,7 +32,7 @@ public class PlayerConnectDatabaseAdapter implements DatabaseAdapter {
             PreparedStatement preparedStmt = sql.prepareStatement(SQL_HISTORY_CONNECTION_INSERT);
             preparedStmt.setInt(1, 1);
             preparedStmt.setLong(2, System.currentTimeMillis());
-            preparedStmt.setInt(3, 2);
+            preparedStmt.setInt(3, 3);
             preparedStmt.setString(4, address[0]);
             preparedStmt.setInt(5, Integer.parseInt(address[1]));
             preparedStmt.setString(6, packet.getUsername());

@@ -1,10 +1,7 @@
 package me.nurio.bungeekeeper.server.databases;
 
 import me.nurio.bungeekeeper.packets.Packet;
-import me.nurio.bungeekeeper.server.databases.adapters.HandshakeDatabaseAdapter;
-import me.nurio.bungeekeeper.server.databases.adapters.PlayerConnectDatabaseAdapter;
-import me.nurio.bungeekeeper.server.databases.adapters.PlayerDisconnectDatabaseAdapter;
-import me.nurio.bungeekeeper.server.databases.adapters.PlayerServerChangeDatabaseAdapter;
+import me.nurio.bungeekeeper.server.databases.adapters.*;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 
 public class DatabaseAdapterFactory {
@@ -17,7 +14,11 @@ public class DatabaseAdapterFactory {
 
     public static DatabaseAdapter getAdapter(byte packetId) {
         if (packetId == 20) return new HandshakeDatabaseAdapter();
+
+        if (packetId == 21) return new PlayerConnectingDatabaseAdapter();
         if (packetId == 25) return new PlayerConnectDatabaseAdapter();
+        if (packetId == 22) return new PlayerConnectedDatabaseAdapter();
+
         if (packetId == 23) return new PlayerServerChangeDatabaseAdapter();
         if (packetId == 24) return new PlayerDisconnectDatabaseAdapter();
         return null;
