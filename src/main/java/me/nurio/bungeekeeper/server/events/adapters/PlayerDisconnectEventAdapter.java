@@ -4,6 +4,7 @@ import me.nurio.bungeekeeper.packets.Packet;
 import me.nurio.bungeekeeper.packets.bungee.DisconnectPacket;
 import me.nurio.bungeekeeper.server.events.EventAdapter;
 import me.nurio.bungeekeeper.server.events.types.PlayerDisconnectEvent;
+import me.nurio.bungeekeeper.server.management.entities.player.Player;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 import me.nurio.events.handler.Event;
 
@@ -19,9 +20,12 @@ public class PlayerDisconnectEventAdapter implements EventAdapter {
         DisconnectPacket disconnectPacket = (DisconnectPacket) packet;
 
         PlayerDisconnectEvent event = new PlayerDisconnectEvent();
-        event.setAddress(disconnectPacket.getAddress());
-        event.setPlayerName(disconnectPacket.getPlayerName());
-        event.setUniqueId(disconnectPacket.getUniqueId());
+        Player player = new Player(
+            disconnectPacket.getPlayerName(),
+            0,
+            disconnectPacket.getAddress()
+        );
+        event.setPlayer(player);
 
         event.setConnectionSocket(socket);
         return event;

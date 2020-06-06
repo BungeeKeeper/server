@@ -3,6 +3,7 @@ package me.nurio.bungeekeeper.server.management.listeners;
 import me.nurio.bungeekeeper.packets.bungee.ConnectionResponsePacket;
 import me.nurio.bungeekeeper.server.events.types.*;
 import me.nurio.bungeekeeper.server.logger.Logger;
+import me.nurio.bungeekeeper.server.management.entities.player.PendingConnection;
 import me.nurio.events.handler.EventHandler;
 import me.nurio.events.handler.EventListener;
 
@@ -11,15 +12,17 @@ public class PlayerConnectionListener implements EventListener {
     @EventHandler
     public void onConnecting(PlayerConnectingEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
-        logger.log("Player '" + event.getPlayerName() + "' is connecting to the server.");
+        PendingConnection player = event.getPlayer();
+
+        logger.log("Player '" + player.getName() + "' is connecting to the server.");
 
         // Temporal response
         ConnectionResponsePacket connectionPacket = new ConnectionResponsePacket(
             event.getEventId(),
-            event.getPlayerName(),
-            event.getUniqueId(),
-            event.getAddress(),
-            event.getPlayerName().contains("x"),
+            player.getName(),
+            null,
+            player.getAddress().getAddress(),
+            player.getName().contains("x"),
             1,
             "Not implemented yet."
         );
@@ -30,25 +33,25 @@ public class PlayerConnectionListener implements EventListener {
     @EventHandler
     public void onConnect(PlayerConnectEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
-        logger.log("Player '" + event.getPlayerName() + "' has connected to the server.");
+        logger.log("Player '" + event.getPlayer().getName() + "' has connected to the server.");
     }
 
     @EventHandler
     public void onConnected(PlayerConnectedEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
-        logger.log("Player '" + event.getPlayerName() + "' has joined to the server.");
+        logger.log("Player '" + event.getPlayer().getName() + "' has joined to the server.");
     }
 
     @EventHandler
     public void onDisconnect(PlayerDisconnectEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
-        logger.log("Player '" + event.getPlayerName() + "' disconnected from server.");
+        logger.log("Player '" + event.getPlayer().getName() + "' disconnected from server.");
     }
 
     @EventHandler
     public void onServerChange(PlayerServerChangeEvent event) {
         Logger logger = event.getConnectionSocket().getLogger();
-        logger.log("Player '" + event.getPlayerName() + "' moved to '" + event.getServerName() + "'.");
+        logger.log("Player '" + event.getPlayer().getName() + "' moved to '" + event.getServerName() + "'.");
     }
 
     @EventHandler

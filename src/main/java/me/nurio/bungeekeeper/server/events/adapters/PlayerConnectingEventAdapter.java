@@ -4,10 +4,9 @@ import me.nurio.bungeekeeper.packets.Packet;
 import me.nurio.bungeekeeper.packets.bungee.PreConnectionPacket;
 import me.nurio.bungeekeeper.server.events.EventAdapter;
 import me.nurio.bungeekeeper.server.events.types.PlayerConnectingEvent;
+import me.nurio.bungeekeeper.server.management.entities.player.Player;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 import me.nurio.events.handler.Event;
-
-import java.util.UUID;
 
 public class PlayerConnectingEventAdapter implements EventAdapter {
 
@@ -22,9 +21,13 @@ public class PlayerConnectingEventAdapter implements EventAdapter {
 
         PlayerConnectingEvent event = new PlayerConnectingEvent();
         event.setEventId(connectionPacket.getEventId());
-        event.setAddress(connectionPacket.getAddress());
-        event.setPlayerName(connectionPacket.getUsername());
-        event.setUniqueId(UUID.randomUUID());
+
+        Player player = new Player(
+            connectionPacket.getUsername(),
+            connectionPacket.getProtocol(),
+            connectionPacket.getAddress()
+        );
+        event.setPlayer(player);
 
         event.setConnectionSocket(socket);
         return event;
