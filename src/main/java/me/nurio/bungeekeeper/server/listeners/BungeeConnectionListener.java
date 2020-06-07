@@ -1,4 +1,4 @@
-package me.nurio.bungeekeeper.server.management.listeners;
+package me.nurio.bungeekeeper.server.listeners;
 
 import me.nurio.bungeekeeper.server.events.types.BungeeConnectEvent;
 import me.nurio.bungeekeeper.server.events.types.BungeeDisconnectEvent;

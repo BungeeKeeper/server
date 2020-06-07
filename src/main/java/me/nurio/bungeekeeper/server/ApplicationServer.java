@@ -4,8 +4,8 @@ import lombok.Getter;
 import me.nurio.bungeekeeper.server.config.ConfigManager;
 import me.nurio.bungeekeeper.server.databases.SQLConnection;
 import me.nurio.bungeekeeper.server.logger.Logger;
-import me.nurio.bungeekeeper.server.management.listeners.BungeeConnectionListener;
-import me.nurio.bungeekeeper.server.management.listeners.PlayerConnectionListener;
+import me.nurio.bungeekeeper.server.listeners.BungeeConnectionListener;
+import me.nurio.bungeekeeper.server.listeners.PlayerConnectionListener;
 import me.nurio.bungeekeeper.server.sockets.MasterSocket;
 import me.nurio.events.EventManager;
 

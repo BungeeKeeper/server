@@ -1,17 +1,27 @@
 package me.nurio.bungeekeeper.server.events.types;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import me.nurio.bungeekeeper.server.management.entities.player.PlayerConnection;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 import me.nurio.events.handler.Event;
 
-@Data
 public class PlayerConnectEvent extends Event {
 
-    private ConnectionSocket connectionSocket;
+    @Getter @Setter private ConnectionSocket connectionSocket;
+    @Getter @Setter private PlayerConnection player;
+    @Getter @Setter private long eventId;
 
-    private long eventId;
+    @Getter private boolean allowed;
+    @Getter private String disallowReason;
 
-    private PlayerConnection player;
+    public void disallow(String reason) {
+        allowed = false;
+        disallowReason = reason;
+    }
+
+    public void allow() {
+        allowed = true;
+    }
 
 }
