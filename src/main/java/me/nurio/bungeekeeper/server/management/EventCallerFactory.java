@@ -20,6 +20,7 @@ public class EventCallerFactory {
         if (packet.getId() == 21) return new PlayerConnectingEventCaller(socket, packet);
         if (packet.getId() == 22) return new PlayerConnectedEventCaller(socket, packet);
         if (packet.getId() == 25) return new PlayerConnectEventCaller(socket, packet);
+        if (packet.getId() == 23) return new PlayerServerChangeEventCaller(socket, packet);
         if (packet.getId() == 24) return new PlayerDisconnectEventCaller(socket, packet);
         return null;
     }
