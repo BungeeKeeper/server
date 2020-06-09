@@ -15,6 +15,7 @@ public class EventCallerFactory {
      */
     public EventCaller getEventCaller(ConnectionSocket socket, Packet packet) {
         if (packet.getId() == 1) return new BungeeConnectEventCaller(socket, packet);
+        if (packet.getId() == 2) return new BungeeDisconnectEventCaller(socket, packet);
 
         if (packet.getId() == 21) return new PlayerConnectingEventCaller(socket, packet);
         if (packet.getId() == 22) return new PlayerConnectedEventCaller(socket, packet);
