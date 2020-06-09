@@ -1,10 +1,7 @@
 package me.nurio.bungeekeeper.server.management;
 
 import me.nurio.bungeekeeper.packets.Packet;
-import me.nurio.bungeekeeper.server.management.callers.PlayerConnectEventCaller;
-import me.nurio.bungeekeeper.server.management.callers.PlayerConnectedEventCaller;
-import me.nurio.bungeekeeper.server.management.callers.PlayerConnectingEventCaller;
-import me.nurio.bungeekeeper.server.management.callers.PlayerDisconnectEventCaller;
+import me.nurio.bungeekeeper.server.management.callers.*;
 import me.nurio.bungeekeeper.server.sockets.connection.ConnectionSocket;
 
 public class EventCallerFactory {
@@ -17,6 +14,8 @@ public class EventCallerFactory {
      * @return EventCaller instance.
      */
     public EventCaller getEventCaller(ConnectionSocket socket, Packet packet) {
+        if (packet.getId() == 1) return new BungeeConnectEventCaller(socket, packet);
+
         if (packet.getId() == 21) return new PlayerConnectingEventCaller(socket, packet);
         if (packet.getId() == 22) return new PlayerConnectedEventCaller(socket, packet);
         if (packet.getId() == 25) return new PlayerConnectEventCaller(socket, packet);
